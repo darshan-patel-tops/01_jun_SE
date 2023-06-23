@@ -1,9 +1,9 @@
 #include<stdio.h>
-int main()
+main()
 {
 
 
-		int marks = 105;
+		int marks = 50;
 		
 		if(marks>=90 && marks<=100)
 		{

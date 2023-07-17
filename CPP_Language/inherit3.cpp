@@ -4,18 +4,20 @@ using namespace std;
 int a,b,c;
 class calc
 {
+
 		public :
-			int add(int a,int b,int c)
+			int add(int a,int b)
 	{
 		
-			cout<<"parent "<<a+b+c;
+			cout<<"parent "<<a+b;
 	}
 };
 class ac :public calc
 {
 	public :
-//		calc::add(int a,int b,int c);
-	int add(int a,int b)
+//		using calc::add;
+		calc::add;
+	int add(int a,int b,int c)
 	{
 		cout<<"child calc "<<a+b+c;
 	}	
@@ -28,5 +30,7 @@ main()
 	cin>>c;
 	ac obj;
 //	obj.calc::add(a,b,c);
+
 	obj.add(a,b);
+	obj.add(a,b,c);
 }

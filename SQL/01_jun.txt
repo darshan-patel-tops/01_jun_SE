@@ -1,0 +1,29 @@
+CRUD
+
+Create
+Read
+Update
+Delete
+
+
+create database  01_jun_se
+
+drop DATABASE 01_jun_se
+
+
+create table users
+(	id int PRIMARY KEY AUTO_INCREMENT,
+ 	name varchar(50) NOT null,
+ 	email varchar(50) UNIQUE KEY,
+ 	username varchar(50) UNIQUE KEY,
+ 	password varchar(50) 
+    
+ )
+
+drop table users;
+
+
+INSERT INTO  users (name,email,username,password) VALUES ('devarsh','devasrsh@mail.com','devarsh','123')
+INSERT INTO  users (email,name,username,password) VALUES ('aaksh@mail.com','aakash','aakash','123'),('vishal@mail.com','vishal','vishal','123')
+
+INSERT INTO  users  VALUES (15,'aksh@mail.com','akash','akash','123')

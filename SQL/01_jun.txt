@@ -25,5 +25,47 @@ drop table users;
 
 INSERT INTO  users (name,email,username,password) VALUES ('devarsh','devasrsh@mail.com','devarsh','123')
 INSERT INTO  users (email,name,username,password) VALUES ('aaksh@mail.com','aakash','aakash','123'),('vishal@mail.com','vishal','vishal','123')
-
+INSERT into post_table(caption,uid,file) VALUES ('nature',1,'123.jpg'),('always happy',16,'345.jpg')
 INSERT INTO  users  VALUES (15,'aksh@mail.com','akash','akash','123')
+
+
+
+for foreign keys
+CREATE TABLE post_table
+(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    caption varchar(50),
+    uid int ,
+    file varchar(50),
+    FOREIGN KEY (uid) REFERENCES users(id)
+	
+)
+
+
+CREATE TABLE demo_table
+(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    password varchar(50),
+    username varchar(50) UNIQUE KEY,
+    email varchar(50) UNIQUE KEY,
+    user_id int ,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+
+)
+
+
+
+
+SELECT * from users
+SELECT name from users
+SELECT name,username from users
+SELECT * from post_table WHERE uid=1
+
+
+
+SELECT * from post_table WHERE caption = "papa ki pari"
+
+
+UPDATE post_table SET caption="happy" where id=1
+DELETE from post_table
+DELETE from users WHERE id =18

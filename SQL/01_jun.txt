@@ -69,3 +69,38 @@ SELECT * from post_table WHERE caption = "papa ki pari"
 UPDATE post_table SET caption="happy" where id=1
 DELETE from post_table
 DELETE from users WHERE id =18
+
+
+SELECT * FROM friend LEFT join collegues on friend.id=collegues.id
+SELECT * FROM friend LEFT join collegues on friend.name=collegues.name
+
+
+SELECT * FROM friend RIGHT join collegues on friend.name=collegues.name
+
+SELECT * FROM friend  INNER join collegues on friend.name=collegues.name
+SELECT * FROM friend   join collegues on friend.name=collegues.name
+
+
+SELECT * FROM friend  FULL OUTER join collegues on friend.name=collegues.name
+SELECT * FROM friend  FULL  join collegues on friend.name=collegues.name
+
+
+
+ALTER TABLE friend
+add COLUMN udhar int 
+
+ALTER TABLE friend
+DROP COLUMN udhar
+
+DROP TABLE friend
+TRUNCATE TABLE collegues
+
+SELECT SUM(salary) from collegues
+SELECT SUM(salary) as total_salary from collegues
+SELECT AVG(salary) as total_salary from collegues
+
+SELECT MAX(salary),name from collegues
+SELECT COUNT(salary) from collegues
+
+SELECT * FROM collegues ORDER by  salary 
+SELECT * FROM collegues ORDER by  salary DESC

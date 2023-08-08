@@ -104,3 +104,75 @@ SELECT COUNT(salary) from collegues
 
 SELECT * FROM collegues ORDER by  salary 
 SELECT * FROM collegues ORDER by  salary DESC
+
+CREATE VIEW my_emp as SELECT name from users;
+
+
+CREATE TRIGGER before_employee_update 
+    BEFORE UPDATE ON employees
+    FOR EACH ROW 
+ INSERT INTO employees_audit
+ SET action = 'update',
+     employeeNumber = OLD.employeeNumber,
+     lastname = OLD.lname,
+     changedat = NOW();
+
+
+it is not very practical
+
+
+
+  DELIMITER //
+CREATE PROCEDURE my_pro(IN number int(10))
+ BEGIN
+ SELECT * FROM person WHERE salary = number;
+ END //
+DELIMITER ;
+
+
+
+
+delimiter //
+create procedure tops_cursor()
+begin
+DECLARE whatever BOOLEAN DEFAULT FALSE;   
+declare cs1 cursor for select name from collegues;
+end //
+
+
+  CREATE FUNCTION GetPrice (Vendor CHAR(20), Pid INT)         
+    RETURNS  DECIMAL(10,3) 
+    LANGUAGE SQL  
+    MODIFIES SQL
+    BEGIN 
+      DECLARE price DECIMAL(10,3); 
+
+      IF Vendor = 'Vendor 1' 
+        THEN SET price = (SELECT ProdPrice FROM V1Table WHERE Id = Pid); 
+      ELSE IF Vendor = 'Vendor 2' 
+        THEN SET price = (SELECT Price 
+                          FROM V2Table 
+    		 		 	  WHERE Pid = GetPrice.Pid); 
+      END IF; 
+  
+    RETURN price; 
+  END 
+
+
+
+CREATE TABLE products (prod_id INT NOT NULL AUTO_INCREMENT, prod_name VARCHAR(20) NOT NULL, prod_cost FLOAT NOT NULL DEFAULT 0.0, prod_price FLOAT NOT NULL DEFAULT 0.0, PRIMARY KEY(prod_id));
+INSERT INTO products (prod_name, prod_cost, prod_price) VALUES ('Basic Widget',5.95,8.35),('Micro Widget',0.95,1.35),('Mega Widget',99.95,140.00);
+
+
+
+DELIMITER $$
+CREATE FUNCTION calcProfit(cost FLOAT, price FLOAT) RETURNS DECIMAL(9,2)
+BEGIN
+  DECLARE profit DECIMAL(9,2);
+  SET profit = price-cost;
+  RETURN profit;
+END$$
+DELIMITER ;
+
+
+SELECT *, calcProfit(prod_cost,prod_price) AS profit FROM products;

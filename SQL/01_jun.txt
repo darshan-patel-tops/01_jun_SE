@@ -176,3 +176,23 @@ DELIMITER ;
 
 
 SELECT *, calcProfit(prod_cost,prod_price) AS profit FROM products;
+
+
+
+
+
+
+
+
+
+
+
+AND  
+
+
+c1 	c2	result
+true	true	true
+true	false	false
+false	false	false
+
+OR 
